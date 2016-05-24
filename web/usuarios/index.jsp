@@ -1,3 +1,5 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,6 +42,34 @@
                         <h3 class="panel-title">Listar Usuarios</h3>
                     </div>
                     <div class="panel-body">
+                        <a href="crear.jsp" class="btn btn-primary">NUEVO USUARIO</a>
+                        <br><br>
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <th>ID</th>
+                                <th>NOMBRE</th>
+                                <th>1erAPELLIDO</th>
+                                <th>2doAPELLIDO</th>
+                                <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                                <%
+                                    Connection con=null;
+                                    String driver="com.mysql.jdbc.Driver";
+                                    String user="root";
+                                    String pass="root";
+                                    String url="jdbc:mysql://localhost:8889/javaee";
+                                    try{
+                                        Class.forName(driver);
+                                        con=DriverManager.getConnection(url, user, pass);
+                                        out.println("Conexion Establecida!!");
+                                    }catch(Exception ex){
+                                        out.println("Error de conexion!!"+ex.getMessage());
+                                    }
+                                %>
+                            </tbody>
+                            
+                        </table>
                         
                         
 
