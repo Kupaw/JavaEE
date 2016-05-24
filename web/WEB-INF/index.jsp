@@ -10,14 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <style>
-            #wrande{
-                font-size: 50px;
-                font-weight: bold;
-            }
-        </style>
     </head>
     <body>
-        <h1>Funciona <span id="wrande">MEN</span></h1>
+        <h1>Funciona :c</h1>
     </body>
 </html>
