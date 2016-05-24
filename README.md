@@ -1,5 +1,6 @@
 # JavaEE
 ´´´
+<code>
 mysql> create database javaee;
 Query OK, 1 row affected (0.01 sec)
 
@@ -31,4 +32,4 @@ Query OK, 1 row affected (0.01 sec)
 
 mysql> insert into usuarios(nombre,apepat,apemat,ciudad_id,estado) values('Juan','Rojas','Perez',2,'activo');
 Query OK, 1 row affected (0.00 sec)!
-´´´
+</code>
