@@ -1,5 +1,5 @@
 # JavaEE
-
+´´´
 mysql> create database javaee;
 Query OK, 1 row affected (0.01 sec)
 
@@ -19,3 +19,4 @@ mysql> create table Ciudades(
     -> nombre varchar(25),
     -> estado varchar(25));
 Query OK, 0 rows affected (0.01 sec)
+´´´
