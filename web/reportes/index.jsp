@@ -9,7 +9,7 @@
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
         <title>Starter Template for Bootstrap</title>
-        <link href="template/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../template/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -55,7 +55,7 @@
             </div>
         </div><!-- /.container -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="template/js/bootstrap.min.js"></script>
+        <script src="../template/js/bootstrap.min.js"></script>
 
     </body>
 </html>
