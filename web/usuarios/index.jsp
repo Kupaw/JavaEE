@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
@@ -62,7 +64,17 @@
                                     try{
                                         Class.forName(driver);
                                         con=DriverManager.getConnection(url, user, pass);
-                                        out.println("Conexion Establecida!!");
+                                        Statement stmt=con.createStatement();
+                                        stmt.executeQuery("select * from Usuarios where estado='activo'");
+                                        ResultSet rs=stmt.getResultSet();
+                                        while(rs.next()){
+                                            out.println("<tr>");
+                                                out.println("<td>"+rs.getString("usuario_id")+"</td>");
+                                                out.println("<td>"+rs.getString("nombre")+"</td>");
+                                                out.println("<td>"+rs.getString("apepat")+"</td>");
+                                                out.println("<td>"+rs.getString("apemat")+"</td>");
+                                            out.println("</tr>");
+                                        }
                                     }catch(Exception ex){
                                         out.println("Error de conexion!!"+ex.getMessage());
                                     }
