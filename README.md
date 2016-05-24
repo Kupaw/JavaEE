@@ -19,4 +19,16 @@ mysql> create table Ciudades(
     -> nombre varchar(25),
     -> estado varchar(25));
 Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into ciudades(nombre,estado) values('Punta Arenas','activo');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into ciudades(nombre,estado) values('Santiago','activo');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into usuarios(nombre,apepat,apemat,ciudad_id,estado) values('Juan','Perez','Perez',1,'activo');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into usuarios(nombre,apepat,apemat,ciudad_id,estado) values('Juan','Rojas','Perez',2,'activo');
+Query OK, 1 row affected (0.00 sec)!
 ´´´
