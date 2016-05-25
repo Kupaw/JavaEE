@@ -65,7 +65,7 @@
                                         Class.forName(driver);
                                         con=DriverManager.getConnection(url, user, pass);
                                         Statement stmt=con.createStatement();
-                                        stmt.executeQuery("select * from Usuarios where estado='activo'");
+                                        stmt.executeQuery("select usuarios.usuario_id,usuarios.nombre,usuarios.apepat,usuarios.apemat,ciudades.nombre as ciudad from Usuarios where usuarios.ciudad_id=ciudades.ciudad_id and usuarios.estado='activo'");
                                         ResultSet rs=stmt.getResultSet();
                                         while(rs.next()){
                                             out.println("<tr>");
