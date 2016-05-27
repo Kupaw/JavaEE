@@ -51,5 +51,14 @@ public class Coneccion {
     public ResultSet getResultado(){
         return rs;
     }
+    
+    public void setInsertar(String sql){
+        try {
+            stmt=con.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+        }
+      
+    }
 
 }

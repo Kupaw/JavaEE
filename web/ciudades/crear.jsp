@@ -40,7 +40,14 @@
                         <h3 class="panel-title">Crear Ciudades</h3>
                     </div>
                     <div class="panel-body">
-            
+                        <form method="POST" action="../ServletCiudad">
+                            <div class="form-group">
+                                <label for="nombre">Nombre Ciudad</label>
+                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar Nombre">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-default">Guardar</button>
+                        </form>
                     </div>
                 </div>
             </div>
