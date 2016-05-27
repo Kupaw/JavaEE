@@ -1,3 +1,4 @@
+<%@page import="accesodato.Coneccion"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,7 +41,28 @@
                         <h3 class="panel-title">Listar Ciudades</h3>
                     </div>
                     <div class="panel-body">
-                  
+                         <a href="crear.jsp" class="btn btn-primary">NUEVO CIUDAD</a>
+                        <br><br>
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <th>ID</th>
+                                <th>NOMBRE</th>
+                                <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                                <%
+                                   Coneccion con=new Coneccion();
+                                   con.setConsulta("select * from Ciudades");
+                                   while(con.getResultado().next()){
+                                    out.println("<tr>");
+                                       out.println("<td>"+con.getResultado().getString("ciudad_id")+"</td>");
+                                       out.println("<td>"+con.getResultado().getString("nombre")+"</td>");
+                                    out.println("</tr>");
+                                   }
+                                %>
+                            </tbody>
+                            
+                        </table>
                     </div>
                 </div>
             </div>
