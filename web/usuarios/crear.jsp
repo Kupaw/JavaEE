@@ -46,16 +46,16 @@
                                 <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar Nombre">
                             </div>
                              <div class="form-group">
-                                <label for="nombre">1er Apellido</label>
-                                <input type="text" class="form-control" name="apepat" id="nombre" placeholder="Ingresar Nombre">
+                                <label for="apepat">Apellido P.</label>
+                                <input type="text" class="form-control" name="apepat" id="apepat" placeholder="Ingresar Apellido Paterno">
                             </div>
                              <div class="form-group">
-                                <label for="nombre">2do Apellido</label>
-                                <input type="text" class="form-control" name="apemat" id="nombre" placeholder="Ingresar Nombre">
+                                <label for="apemat">Apellido M.</label>
+                                <input type="text" class="form-control" name="apemat" id="apemat" placeholder="Ingresar Apellido Materno">
                             </div>
                              <div class="form-group">
-                                <label for="nombre">Ciudad</label>
-                                <input type="text" class="form-control" name="ciudad_id" id="nombre" placeholder="Ingresar Nombre">
+                                <label for="ciudad_id">Ciudad</label>
+                                <input type="text" class="form-control" name="ciudad_id" id="ciudad_id" placeholder="Ingresar id de ciudad">
                             </div>
                             
                             <button type="submit" class="btn btn-default">Guardar</button>

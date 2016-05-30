@@ -26,13 +26,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="#">Proyecto Java Enterprise Edition</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="../">Inicio</a></li>
+                        <li class="active"><a href="#">Usuarios</a></li>
+                        <li><a href="../ciudades">Ciudades</a></li>
+                        <li><a href="../reportes">Reportes</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -51,14 +52,15 @@
                             <thead>
                                 <th>ID</th>
                                 <th>NOMBRE</th>
-                                <th>1erAPELLIDO</th>
-                                <th>2doAPELLIDO</th>
+                                <th>Apellido P.</th>
+                                <th>Apellido M.</th>
+                                <th>Ciudad</th>
                                 <th>Acciones</th>
                             </thead>
                             <tbody>
                                 <%
                                    Coneccion con=new Coneccion();
-                                   con.setConsulta("select Usuarios.usuario_id,Usuarios.nombre,usuarios.apepat,usuarios.apemat,ciudades.nombre as ciudad from Usuarios,Ciudades where Usuarios.ciudad_id=Ciudades.ciudad_id");
+                                   con.setConsulta("select usuarios.usuario_id,usuarios.nombre,usuarios.apepat,usuarios.apemat,ciudades.nombre as ciudad from usuarios,Ciudades where usuarios.ciudad_id=ciudades.ciudad_id");
                                    while(con.getResultado().next()){
                                     out.println("<tr>");
                                        out.println("<td>"+con.getResultado().getString("usuario_id")+"</td>");
@@ -66,6 +68,7 @@
                                        out.println("<td>"+con.getResultado().getString("apepat")+"</td>");
                                        out.println("<td>"+con.getResultado().getString("apemat")+"</td>");
                                        out.println("<td>"+con.getResultado().getString("ciudad")+"</td>");
+                                       out.println("<td><a href='../ServletUsuario/eliminar=0' class='btn btn-danger'>Eliminar</a>&nbsp;&nbsp;<a href='editar.jsp' class='btn btn-success'>Editar Usuario</a></td>");
                                     out.println("</tr>");
                                    }
                                 %>

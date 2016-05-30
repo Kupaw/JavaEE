@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import negocio.Usuario;
 
 /**
  *
@@ -37,10 +38,14 @@ public class ServletUsuario extends HttpServlet {
                 String nombre=request.getParameter("nombre");
                 String apepat=request.getParameter("apepat");
                 String apemat=request.getParameter("apemat");
-                String ciudad_id=request.getParameter("ciudad_id");
+                int ciudad_id=Integer.parseInt(request.getParameter("ciudad_id"));
+                Usuario usuario = new Usuario();
+                usuario.setNombre(nombre);
+                usuario.setApepat(apepat);
+                usuario.setApemat(apemat);
+                usuario.setCiudad_id(ciudad_id);
+                usuario.insertUsuario();
                 
-                Coneccion con=new Coneccion();
-                con.setInsertar("insert into Usuarios(nombre,apepat,apemat,ciudad_id) values('"+nombre+"','"+apepat+"','"+apemat+"','"+ciudad_id+"')");
                 response.sendRedirect("usuarios/index.jsp");
         }
     }

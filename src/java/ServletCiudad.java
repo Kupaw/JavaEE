@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import negocio.Ciudad;
 
 /**
  *
@@ -35,8 +36,10 @@ public class ServletCiudad extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
                 //ESTA PARTE VA NUESTRO CODIGO
                 String nombre=request.getParameter("nombre");
-                Coneccion con=new Coneccion();
-                con.setInsertar("insert into Ciudades(nombre) values('"+nombre+"')");
+                Ciudad ciudad = new Ciudad();
+                ciudad.setNombre(nombre);
+                ciudad.insertCiudad();
+                
                 response.sendRedirect("ciudades/index.jsp");
         }
     }

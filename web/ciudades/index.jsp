@@ -22,13 +22,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="#">Proyecto Java Enterprise Edition</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="../">Inicio</a></li>
+                        <li><a href="../usuarios">Usuarios</a></li>
+                        <li class="active"><a href="#">Ciudades</a></li>
+                        <li><a href="../reportes">Reportes</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -46,7 +47,7 @@
                         <table class="table table-condensed table-hover table-bordered">
                             <thead>
                                 <th>ID</th>
-                                <th>NOMBRE</th>
+                                <th>Nombre</th>
                                 <th>Acciones</th>
                             </thead>
                             <tbody>
@@ -57,6 +58,7 @@
                                     out.println("<tr>");
                                        out.println("<td>"+con.getResultado().getString("ciudad_id")+"</td>");
                                        out.println("<td>"+con.getResultado().getString("nombre")+"</td>");
+                                       out.println("<td><a href='#' class='btn btn-danger'>Eliminar</a>&nbsp;&nbsp;<a href='editar.jsp' class='btn btn-success'>Editar Usuario</a></td>");
                                     out.println("</tr>");
                                    }
                                 %>
