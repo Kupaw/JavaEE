@@ -36,8 +36,9 @@ public class ServletUsuario extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             //ESTA PARTE VA NUESTRO CODIGO
                 int eliminar = Integer.parseInt(request.getParameter("eliminar"));
+                Usuario usuario = new Usuario();
+                
                 if(String.valueOf(eliminar) != null){
-                    Usuario usuario = new Usuario();
                     usuario.setUsuario_id(eliminar);
                     usuario.deleteUsuario();
                     
@@ -47,7 +48,6 @@ public class ServletUsuario extends HttpServlet {
                 String apepat=request.getParameter("apepat");
                 String apemat=request.getParameter("apemat");
                 int ciudad_id=Integer.parseInt(request.getParameter("ciudad_id"));
-                Usuario usuario = new Usuario();
                 usuario.setNombre(nombre);
                 usuario.setApepat(apepat);
                 usuario.setApemat(apemat);
