@@ -35,12 +35,22 @@ public class ServletCiudad extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
                 //ESTA PARTE VA NUESTRO CODIGO
-                String nombre=request.getParameter("nombre");
+                int eliminar = Integer.parseInt(request.getParameter("eliminar"));
                 Ciudad ciudad = new Ciudad();
+                
+                if(String.valueOf(eliminar) != null){
+                    ciudad.setCiudad_id(eliminar);
+                    ciudad.deleteCiudad();
+                    
+                    response.sendRedirect("ciudades/index.jsp");
+                }
+                else{
+                String nombre=request.getParameter("nombre");
                 ciudad.setNombre(nombre);
                 ciudad.insertCiudad();
                 
                 response.sendRedirect("ciudades/index.jsp");
+                }
         }
     }
 
@@ -82,5 +92,4 @@ public class ServletCiudad extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

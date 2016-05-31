@@ -50,7 +50,7 @@ public class Ciudad {
                 "values('" + this.nombre + "','Activo')");
     }
     public void deleteCiudad(){
-        
+        con.setInsertar("update Ciudades set estado='Pasivo' where ciudad_id ='" + this.getCiudad_id() + "'");
     }
     public void updateCiudad(){
         

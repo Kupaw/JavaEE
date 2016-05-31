@@ -1,3 +1,4 @@
+<%@page import="accesodato.Coneccion"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -55,7 +56,15 @@
                             </div>
                              <div class="form-group">
                                 <label for="ciudad_id">Ciudad</label>
-                                <input type="text" class="form-control" name="ciudad_id" id="ciudad_id" placeholder="Ingresar id de ciudad">
+                                <%
+                                    Coneccion con = new Coneccion();
+                                    con.setConsulta("select * from ciudades");
+                                %>
+                                <select class="form-control">
+                                    <% while(con.getResultado().next()){%>
+                                    <option value=<% con.getResultado().getString("ciudad_id"); %>><% out.println("" + con.getResultado().getString("nombre")); %></option>
+                                    <% } %>
+                                </select>
                             </div>
                             
                             <button type="submit" class="btn btn-default">Guardar</button>

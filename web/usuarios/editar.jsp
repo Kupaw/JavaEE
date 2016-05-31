@@ -1,3 +1,4 @@
+<%@page import="accesodato.Coneccion"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,36 +28,66 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <a class="navbar-brand" href="#">Proyecto Java Enterprise Edition</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../">Inicio</a></li>
+                        <li><a href="index.jsp">Usuarios</a></li>
+                        <li><a href="../ciudades">Ciudades</a></li>
+                        <li><a href="../reportes">Reportes</a></li>
+                    </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">  
-        <br /><br /><br />
-        <div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Titulo de panel</h3>
-                </div>
-                <div class="panel-body">
-                    <h1>Panel Primario</h1>
-                    <br />
-                    <div class="list-group">
-                        <a href="usuarios\index.jsp" class="list-group-item">Usuarios</a>
-                        <a href="ciudades\index.jsp" class="list-group-item">Ciudades</a>
-                        <a href="reportes\index.jsp" class="list-group-item">Reportes</a>
+        <br><br><br>
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Crear Usuarios</h3>
+                    </div>
+                    <%
+                        int id=Integer.parseInt(request.getParameter("editar"));
+                        Coneccion con=new Coneccion();
+                        con.setConsulta("select * from Usuarios where usuario_id='" + id + "'");
+                    %>
+                    <div class="panel-body">
+                        <% while(con.getResultado().next()){ %>
+                        <form method="POST" action="../ServletUsuario">
+                            <div class="form-group">
+                                <input type="hidden" value="<% out.println(""+con.getResultado().getString("usuario_id"));%>" name="id">
+                                <label for="nombre">Nombre </label>
+                                <input type="text" class="form-control" name="nombre" id="nombre" value="<% out.println(""+con.getResultado().getString("nombre"));%>" placeholder="Ingresar Nombre">
+                            </div>
+                             <div class="form-group">
+                                <label for="apepat">Apellido P.</label>
+                                <input type="text" class="form-control" name="apepat" id="apepat" value="<% out.println(""+con.getResultado().getString("apepat"));%>" placeholder="Ingresar Apellido Paterno">
+                            </div>
+                             <div class="form-group">
+                                <label for="apemat">Apellido M.</label>
+                                <input type="text" class="form-control" name="apemat" id="apemat" value="<% out.println(""+con.getResultado().getString("apemat"));}%>" placeholder="Ingresar Apellido Materno">
+                            </div>
+                             <div class="form-group">
+                                <label for="ciudad_id">Ciudad</label>
+                                <%
+                                    con.setConsulta("select * from ciudades");
+                                %>
+                                <select class="form-control">
+                                    <% while(con.getResultado().next()){%>
+                                    <option value=<% con.getResultado().getString("ciudad_id"); %>><% out.println("" + con.getResultado().getString("nombre")); %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-default" value="guardar">Guardar</button>
+                        </form>
+                        
+
                     </div>
                 </div>
             </div>
-        </div>
     </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
