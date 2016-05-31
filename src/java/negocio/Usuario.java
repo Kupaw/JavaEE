@@ -77,7 +77,7 @@ public class Usuario {
                 "values('" + this.getNombre() + "','" + this.getApepat() + "','" + this.getApemat() + "','" + this.getCiudad_id() + "','Activo')");
     }
     public void deleteUsuario(){
-        con.setInsertar("update Usuarios set estado='pasivo' where usuario_id = '" + this.getUsuario_id() + "'");
+        con.setInsertar("update Usuarios set estado='Pasivo' where usuario_id = '" + this.getUsuario_id() + "'");
     }
     public void updateUsuario(){
         

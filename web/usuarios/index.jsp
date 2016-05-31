@@ -55,12 +55,13 @@
                                 <th>Apellido P.</th>
                                 <th>Apellido M.</th>
                                 <th>Ciudad</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </thead>
                             <tbody>
                                 <%
                                    Coneccion con=new Coneccion();
-                                   con.setConsulta("select usuarios.usuario_id,usuarios.nombre,usuarios.apepat,usuarios.apemat,ciudades.nombre as ciudad from usuarios,Ciudades where usuarios.ciudad_id=ciudades.ciudad_id");
+                                   con.setConsulta("select usuarios.usuario_id,usuarios.nombre,usuarios.apepat,usuarios.apemat,usuarios.estado, ciudades.nombre as ciudad from usuarios,Ciudades where usuarios.ciudad_id=ciudades.ciudad_id");
                                    while(con.getResultado().next()){
                                     out.println("<tr>");
                                        out.println("<td>"+con.getResultado().getString("usuario_id")+"</td>");
@@ -68,7 +69,8 @@
                                        out.println("<td>"+con.getResultado().getString("apepat")+"</td>");
                                        out.println("<td>"+con.getResultado().getString("apemat")+"</td>");
                                        out.println("<td>"+con.getResultado().getString("ciudad")+"</td>");
-                                       out.println("<td><a href='../ServletUsuario/eliminar=0' class='btn btn-danger'>Eliminar</a>&nbsp;&nbsp;<a href='editar.jsp' class='btn btn-success'>Editar Usuario</a></td>");
+                                       out.println("<td>"+con.getResultado().getString("estado")+"</td>");
+                                       out.println("<td><a href='../ServletUsuario?eliminar=" + con.getResultado().getString("usuario_id") + "' class='btn btn-danger'>Eliminar</a>&nbsp;&nbsp;<a href='editar.jsp' class='btn btn-success'>Editar Usuario</a></td>");
                                     out.println("</tr>");
                                    }
                                 %>

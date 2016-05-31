@@ -35,6 +35,14 @@ public class ServletUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             //ESTA PARTE VA NUESTRO CODIGO
+                int eliminar = Integer.parseInt(request.getParameter("eliminar"));
+                if(String.valueOf(eliminar) != null){
+                    Usuario usuario = new Usuario();
+                    usuario.setUsuario_id(eliminar);
+                    usuario.deleteUsuario();
+                    
+                    response.sendRedirect("usuarios/index.jsp");
+                } else {
                 String nombre=request.getParameter("nombre");
                 String apepat=request.getParameter("apepat");
                 String apemat=request.getParameter("apemat");
@@ -47,6 +55,7 @@ public class ServletUsuario extends HttpServlet {
                 usuario.insertUsuario();
                 
                 response.sendRedirect("usuarios/index.jsp");
+            }
         }
     }
 
