@@ -35,11 +35,11 @@ public class ServletCiudad extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
                 //ESTA PARTE VA NUESTRO CODIGO
-                int eliminar = Integer.parseInt(request.getParameter("eliminar"));
+                String eliminar = request.getParameter("eliminar");
                 Ciudad ciudad = new Ciudad();
                 
-                if(String.valueOf(eliminar) != null){
-                    ciudad.setCiudad_id(eliminar);
+                if(eliminar != null){
+                    ciudad.setCiudad_id(Integer.parseInt(eliminar));
                     ciudad.deleteCiudad();
                     
                     response.sendRedirect("ciudades/index.jsp");

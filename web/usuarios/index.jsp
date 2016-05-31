@@ -48,7 +48,7 @@
                     <div class="panel-body">
                         <a href="crear.jsp" class="btn btn-primary">NUEVO USUARIO</a>
                         <br><br>
-                        <table class="table table-condensed table-hover table-bordered">
+                        <table class="table table-condensed table-hover">
                             <thead>
                                 <th>ID</th>
                                 <th>NOMBRE</th>
