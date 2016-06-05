@@ -34,45 +34,40 @@ public class ServletUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            //ESTA PARTE VA NUESTRO CODIGO
-                String eliminar = request.getParameter("eliminar");
-                Usuario usuario = new Usuario();
-                
-                if(eliminar != null){
-                    usuario.setUsuario_id(Integer.parseInt(eliminar));
-                    usuario.deleteUsuario();
-                    
-                    response.sendRedirect("usuarios/index.jsp");
-                }
-                else if(request.getParameter("guardar")!= null){
-                    int id = Integer.parseInt(request.getParameter("id"));
-                    String nombre=request.getParameter("nombre");
-                    String apepat=request.getParameter("apepat");
-                    String apemat=request.getParameter("apemat");
-                    int ciudad_id=Integer.parseInt(request.getParameter("ciudad_id"));
-                    usuario.setNombre(nombre);
-                    usuario.setApepat(apepat);
-                    usuario.setApemat(apemat);
-                    usuario.setCiudad_id(ciudad_id);
-                    usuario.setUsuario_id(id);
-                    usuario.updateUsuario();
-                    
-                    response.sendRedirect("usuarios/index.jsp");
-                }
-                else {
-                    String nombre=request.getParameter("nombre");
-                    String apepat=request.getParameter("apepat");
-                    String apemat=request.getParameter("apemat");
-                    int ciudad_id=Integer.parseInt(request.getParameter("ciudad_id"));
-                    usuario.setNombre(nombre);
-                    usuario.setApepat(apepat);
-                    usuario.setApemat(apemat);
-                    usuario.setCiudad_id(ciudad_id);
-                    usuario.insertUsuario();
-                    response.sendRedirect("usuarios/index.jsp");
-                }
-                
             
+            if(request.getParameter("crear") != null){
+                String nombre = request.getParameter("nombre");
+                String apepat = request.getParameter("apepat");
+                String apemat = request.getParameter("apemat");
+                int ciudad_id = Integer.parseInt(request.getParameter("ciudad"));
+                
+                Usuario user = new Usuario();
+                user.setNombre(nombre);
+                user.setApepat(apepat);
+                user.setApemat(apemat);
+                user.setCiudad_id(ciudad_id);
+                user.insertUsuario();
+                
+                response.sendRedirect("usuarios/index.jsp");
+            }
+            
+            else if(request.getParameter("actualizar") != null){
+                String usuario_id = request.getParameter("usuario_id");
+                String nombre = request.getParameter("nombre");
+                String apepat = request.getParameter("apepat");
+                String apemat = request.getParameter("apemat");
+                int ciudad_id = Integer.parseInt(request.getParameter("ciudad"));
+                
+                Usuario user = new Usuario();
+                user.setUsuario_id(Integer.parseInt(usuario_id));
+                user.setNombre(nombre);
+                user.setApepat(apepat);
+                user.setApemat(apemat);
+                user.setCiudad_id(ciudad_id);
+                user.updateUsuario();
+                
+                response.sendRedirect("usuarios/index.jsp");
+            }
         }
     }
 

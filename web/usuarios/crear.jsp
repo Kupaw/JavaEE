@@ -22,13 +22,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="#">Proyecto Java Enterprise Edition</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="../">Inicio</a></li>
+                        <li><a href="index.jsp">Usuarios</a></li>
+                        <li><a href="../ciudades">Ciudades</a></li>
+                        <li><a href="../reportes">Reportes</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -60,14 +61,14 @@
                                     Coneccion con = new Coneccion();
                                     con.setConsulta("select * from ciudades");
                                 %>
-                                <select class="form-control">
+                                <select class="form-control" name="ciudad">
                                     <% while(con.getResultado().next()){%>
-                                    <option value=<% con.getResultado().getString("ciudad_id"); %>><% out.println("" + con.getResultado().getString("nombre")); %></option>
+                                    <option value=<% out.println(""+con.getResultado().getString("ciudad_id")); %>> <% out.println("" + con.getResultado().getString("nombre")); %> </option>
                                     <% } %>
                                 </select>
                             </div>
                             
-                            <button type="submit" class="btn btn-default">Guardar</button>
+                            <button type="submit" class="btn btn-default" name="crear">Guardar</button>
                         </form>
                         
 

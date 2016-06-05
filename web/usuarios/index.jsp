@@ -70,7 +70,7 @@
                                        out.println("<td>"+con.getResultado().getString("apemat")+"</td>");
                                        out.println("<td>"+con.getResultado().getString("ciudad")+"</td>");
                                        out.println("<td>"+con.getResultado().getString("estado")+"</td>");
-                                       out.println("<td><a href='../ServletUsuario?eliminar=" + con.getResultado().getString("usuario_id") + "' class='btn btn-danger'>Eliminar</a>&nbsp;&nbsp;<a href='editar.jsp?editar=" + con.getResultado().getString("usuario_id") + "' class='btn btn-success'>Editar Usuario</a></td>");
+                                       out.println("<td><a href='../ServletUsuario?eliminar=" + con.getResultado().getString("usuario_id") + "' class='btn btn-danger'>Eliminar</a>&nbsp;&nbsp;<a href='editar.jsp?edit=" + con.getResultado().getString("usuario_id") + "' class='btn btn-success'>Editar Usuario</a></td>");
                                     out.println("</tr>");
                                    }
                                 %>

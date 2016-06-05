@@ -49,24 +49,27 @@
                         <h3 class="panel-title">Crear Usuarios</h3>
                     </div>
                     <%
-                        int id=Integer.parseInt(request.getParameter("editar"));
+                        int id=Integer.parseInt(request.getParameter("edit"));
                         Coneccion con=new Coneccion();
                         con.setConsulta("select * from Usuarios where usuario_id='" + id + "'");
+                        String ciu = "";
                     %>
                     <div class="panel-body">
-                        <% while(con.getResultado().next()){ %>
+                        <% while(con.getResultado().next()){ 
+                        ciu = con.getResultado().getString("ciudad_id");%>
                         <form method="POST" action="../ServletUsuario">
                             <div class="form-group">
-                                <input type="hidden" value="<% out.println(""+con.getResultado().getString("usuario_id"));%>" name="id">
+                                <label for="usuario_id">ID</label>
+                                <input type="text" class="form-control" value="<% out.println(""+con.getResultado().getString("usuario_id"));%>" name="usuario_id" id="usuario_id" readonly="true">
                                 <label for="nombre">Nombre </label>
                                 <input type="text" class="form-control" name="nombre" id="nombre" value="<% out.println(""+con.getResultado().getString("nombre"));%>" placeholder="Ingresar Nombre">
                             </div>
                              <div class="form-group">
-                                <label for="apepat">Apellido P.</label>
+                                <label for="apepat">Apellido Paterno</label>
                                 <input type="text" class="form-control" name="apepat" id="apepat" value="<% out.println(""+con.getResultado().getString("apepat"));%>" placeholder="Ingresar Apellido Paterno">
                             </div>
                              <div class="form-group">
-                                <label for="apemat">Apellido M.</label>
+                                <label for="apemat">Apellido Materno</label>
                                 <input type="text" class="form-control" name="apemat" id="apemat" value="<% out.println(""+con.getResultado().getString("apemat"));}%>" placeholder="Ingresar Apellido Materno">
                             </div>
                              <div class="form-group">
@@ -74,14 +77,19 @@
                                 <%
                                     con.setConsulta("select * from ciudades");
                                 %>
-                                <select class="form-control">
-                                    <% while(con.getResultado().next()){%>
-                                    <option value=<% con.getResultado().getString("ciudad_id"); %>><% out.println("" + con.getResultado().getString("nombre")); %></option>
-                                    <% } %>
+                                <select name="ciudad" class="form-control">
+                                    <%while(con.getResultado().next()){
+                                        if(ciu.equals(con.getResultado().getString("ciudad_id"))){
+                                           out.println("<option value='" + con.getResultado().getString("ciudad_id") + "' selected>" + con.getResultado().getString("nombre") + "</option>"); 
+                                        }
+                                        else{
+                                        out.println("<option value='" + con.getResultado().getString("ciudad_id") + "'>" + con.getResultado().getString("nombre") + "</option>");
+                                        }
+                                    } %>
                                 </select>
                             </div>
                             
-                            <button type="submit" class="btn btn-default" value="guardar">Guardar</button>
+                            <button type="submit" name="actualizar" class="btn btn-default" value="guardar">Guardar</button>
                         </form>
                         
 
